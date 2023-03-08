@@ -23,7 +23,7 @@ interface PostData {
             sourceUrl: string;
             altText: string;
         };
-    } | null;
+    };
 }
 
 
@@ -134,9 +134,13 @@ const Post: React.FC<PostProps> = (props) => {
                     </>
                 )}
             </Head>
-            <div>
-                <h1>{post.title}</h1>
-                <div dangerouslySetInnerHTML={{ __html: post.content }} />
+            <div className="post-container">
+                <h1>{post?.title}</h1>
+                <img
+                    src={post?.featuredImage?.node?.sourceUrl}
+                // alt={post?.featuredImage?.node?.altText || post.title}
+                />
+                <article dangerouslySetInnerHTML={{ __html: post.content }} />
             </div>
 
         </>
